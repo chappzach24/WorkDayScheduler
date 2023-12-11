@@ -2,14 +2,31 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-let dateObj = new Date();
-let month = dateObj.getUTCMonth() + 1; //months from 1-12
-let day = dateObj.getUTCDate();
-let year = dateObj.getUTCFullYear();
-
-newdate = year + "/" + month + "/" + day;
-document.getElementById("currentDay").innerHTML = newdate;
 $(function () {
+
+  let currentDayEl = $("#currentDay");
+  //Uses dayjs advanced format to provide the correct date
+  let currentDate = dayjs().format("dddd, MMMM D YYYY");
+  let timeBlocks = $(".time-block");
+
+  //Displays the current Date in the header of the page
+  currentDayEl.text(currentDate);
+
+  //saves user input to local
+  $(".saveBtn").on("click", function () {
+    let currentBlock = $(this).parent().attr("id");
+    let eventText = $(this).siblings("textarea").val();
+    localStorage.setItem(currentBlock, eventText);
+  });
+});
+
+//will change color for past, present and future
+function color(){
+
+
+}
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -28,4 +45,4 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
