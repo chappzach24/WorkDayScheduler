@@ -7,7 +7,9 @@ $(function () {
   let currentDayEl = $("#currentDay");
   //Uses dayjs advanced format to provide the correct date
   let currentDate = dayjs().format("dddd, MMMM D YYYY");
-  let timeBlocks = $(".time-block");
+  let currentTime = dayjs().format("hh:mm")
+  
+  console.log(currentTime);
 
   //Displays the current Date in the header of the page
   currentDayEl.text(currentDate);
@@ -22,7 +24,7 @@ $(function () {
 
 //will change color for past, present and future
 function color(){
-
+//needs if else to check each time block to make it the correct color
 
 }
 
